@@ -125,4 +125,4 @@ for cost in cost_l:   #виведення оновлених кошиків
 
 for cost in cost_l:
     print(f'\nКлієнт- {cost.name}')
-    cost.checkout()  #виведення платежів клієнтів
+    cost.checkout()   #виведення платежів клієнтів
