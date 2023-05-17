@@ -18,16 +18,16 @@ class Animal:
     def eat(self):
         if self.hunger <= 6:
             self.health += random.randint(0, 5)
-            self.happiness += random.randint(0, 5)
-            self.hunger += random.randint(5, 7)
+            self.happiness += random.randint(0, 3)
+            self.hunger += random.randint(5, 6)
             print(f'Ви пограли з {self.name}')
         else:
             print(self.name, 'не голодний!')
     def play(self):
         if self.happiness <= 6:
             self.health += random.randint(0,5)
-            self.happiness += random.randint(5,8)
-            self.hunger -= random.randint(3, 5)
+            self.happiness += random.randint(5, 7)
+            self.hunger -= random.randint(3, 9)
             print(f'Ви пограли з {self.name}')
             if self.hunger < 0:
                 self.hunger = 0
@@ -52,16 +52,23 @@ class Zoo:
             print(f'\n{animal.name} не був знайдений у Зоопарку')
     def feed_all(self):
         for animal in self.animals:
-            animal.eat()
+            animal.health += random.randint(0, 5)
+            animal.happiness += random.randint(0, 3)
+            animal.hunger += random.randint(5, 6)
     def play_with_all(self):
         for animal in self.animals:
-            animal.play()
+            animal.health += random.randint(0,5)
+            animal.happiness += random.randint(5, 7)
+            animal.hunger -= random.randint(3, 9)
             if animal.hunger < 0:
                 animal.hunger = 0
                 print(f'{animal.name} терміново потребує їжу!')
     def grow_all(self):
         for animal in self.animals:
             animal.age += 1
+            animal.health = random.randint(0, 8)
+            animal.hunger = random.randint(5, 8)
+            animal.happiness = random.randint(0, 8)
     def __str__(self):
         return '\n'.join([str(animal) for animal in self.animals])
 
